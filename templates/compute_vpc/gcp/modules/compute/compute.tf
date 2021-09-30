@@ -12,7 +12,7 @@ data "google_compute_image" "debian_image" {
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_instance
 resource "google_compute_instance" "vm_instance" {
-  name         = "hello-world" # (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)
+  name         = "vm-${random_id.instance_id.hex}" # (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)
   machine_type = "f1-micro"
 
   boot_disk {
@@ -20,6 +20,8 @@ resource "google_compute_instance" "vm_instance" {
       image = data.google_compute_image.debian_image.self_link
     }
   }
+
+  metadata_startup_script = "sudo apt-get update && sudo apt-get install apache2 -y && echo '<!doctype html><html><body><h1>Hello from Terraform on Google Cloud!</h1></body></html>' | sudo tee /var/www/html/index.html"
 
   tags = ["web"]
 

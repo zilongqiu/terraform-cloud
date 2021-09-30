@@ -1,9 +1,9 @@
 output "instance_id" {
   description = "ID of the compute instance"
-  value       = "${module.compute.instance_id}"
+  value       = aws_instance.web-server-instance.id
 }
 
 output "instance_public_ip" {
   description = "Public IP address of the compute instance"
-  value       = "${module.compute.instance_public_ip}"
+  value       = aws_instance.web-server-instance.public_ip
 }

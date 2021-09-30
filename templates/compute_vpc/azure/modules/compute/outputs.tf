@@ -1,9 +1,9 @@
 output "instance_id" {
   description = "ID of the compute instance"
-  value       = "${module.compute.instance_id}"
+  value       = azurerm_linux_virtual_machine.example.id
 }
 
 output "instance_public_ip" {
   description = "Public IP address of the compute instance"
-  value       = "${module.compute.instance_public_ip}"
+  value       = azurerm_linux_virtual_machine.example.public_ip_address
 }

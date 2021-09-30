@@ -1,5 +1,5 @@
 resource "google_compute_instance" "vm_instance" {
-  name         = "hello-world" # (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)
+  name         = "vm-${random_id.instance_id.hex}" # (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)
   machine_type = "f1-micro"
 
   boot_disk {
