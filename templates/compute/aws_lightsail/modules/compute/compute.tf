@@ -5,7 +5,7 @@ resource "aws_lightsail_instance" "test" {
   blueprint_id      = "ubuntu_20_04"
   bundle_id         = "nano_2_0"
   # key_pair_name     = "my_key_pair"
-  # user_data         = "${file("userdata.sh")}" 
+  user_data         = "${file("./modules/compute/startup.sh")}"
   tags = {
     env = "test"
   }
