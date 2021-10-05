@@ -34,4 +34,5 @@ override.tf.json
 terraform.rc
 
 # Ignore credential files
+secrets/*
 terraform-*.json

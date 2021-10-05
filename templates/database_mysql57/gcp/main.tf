@@ -4,6 +4,10 @@ terraform {
       source = "hashicorp/google"
       version = "3.85.0"
     }
+    template = {
+      source = "hashicorp/template"
+      version = "2.2.0"
+    }
   }
 }
 
@@ -15,6 +19,13 @@ provider "google" {
   zone    = "asia-northeast1-a"
 }
 
-#module "compute" {
-#  source = "./modules/my_module"
-#}
+module "db" {
+  source = "./modules/db"
+  mysql_image_name = var.mysql_image_name
+  mysql_container_port = var.mysql_container_port
+  mysql_container_name = var.mysql_container_name
+  mysql_root_password = var.mysql_root_password
+  mysql_user_name = var.mysql_user_name
+  mysql_user_password = var.mysql_user_password
+  mysql_database_name = var.mysql_database_name
+}

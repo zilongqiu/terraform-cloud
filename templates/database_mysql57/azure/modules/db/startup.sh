@@ -8,9 +8,6 @@ apt-get update
 apt-cache policy docker-ce
 apt-get install -y docker-ce
 
-# Pull MySQL image
-docker pull ${mysql_image_name}
-
 # Run container with port mapping
 docker run -d \
     --name ${mysql_container_name} \
